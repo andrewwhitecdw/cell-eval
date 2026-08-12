@@ -29,7 +29,7 @@ jobs:
 
   all_jobs:
     runs-on: linux-amd64-cpu8
-    needs: [prek, pytest, cli-test]
+    needs: [pre-commit, pytest, cli-test]
     steps:
       - name: Complete
         run: echo "Complete"
@@ -51,7 +51,7 @@ jobs:
         run: |
           uv sync --all-extras --dev
 
-  prek:
+  pre-commit:
     runs-on: linux-amd64-cpu8
 
     needs: [install-job]
@@ -70,9 +70,9 @@ jobs:
         run: |
           uv sync --all-extras --dev
 
-      - name: run prek
+      - name: run pre-commit
         run: |
-          uv run prek run --all-files --show-diff-on-failure
+          uv run pre-commit run --all-files --show-diff-on-failure
 
   pytest:
     runs-on: linux-amd64-cpu8
