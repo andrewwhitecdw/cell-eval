@@ -14,8 +14,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    outputs:
-      pr-info: ${{ steps.get-pr-info.outputs.pr-info }}
     steps:
       - name: Get PR info
         id: get-pr-info
