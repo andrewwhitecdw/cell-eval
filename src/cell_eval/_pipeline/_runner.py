@@ -235,4 +235,7 @@ class MetricPipeline:
 
     def get_agg_results(self) -> pl.DataFrame:
         """Get aggregated results as a DataFrame."""
-        return self.get_results().drop("perturbation").describe()
+        results = self.get_results()
+        if results.is_empty():
+            return pl.DataFrame()
+        return results.drop("perturbation").describe()
